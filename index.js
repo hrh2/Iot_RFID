@@ -10,20 +10,25 @@ const io = socketIo(server, {
       origin: "*",
       methods: ["GET", "POST"],
       credentials: true
-      }
+  }
 });
-      
+
 require('dotenv').config();
-const port =process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
+
 app.use(cors({
   origin: "*",
   methods: 'GET, POST, PUT, DELETE',
   credentials: true,
   allowedHeaders: 'Content-Type,Authorization',
-  exposedHeaders: 'Content-Range,X-Content- Range'
+  exposedHeaders: 'Content-Range,X-Content-Range'
 }));
 
+// Middleware to parse JSON bodies
 app.use(express.json());
+
+// Middleware to parse URL-encoded bodies (form-data)
+app.use(express.urlencoded({ extended: true }));
 
 const dbClient = new Client({
   connectionString: `postgres://postgres.ymxaumghnhxmtjhgoopm:${process.env.PG_PSSWD}@aws-0-eu-central-1.pooler.supabase.com:6543/postgres`,
@@ -35,9 +40,7 @@ dbClient.connect()
 
 io.on('connection', (socket) => {
   console.log('New client connected');
-  
   sendExistingData(socket);
-  
   socket.on('disconnect', () => {
     console.log('Client disconnected');
   });
