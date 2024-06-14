@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "IOT",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrh2/Iot_RFID.git"
+  },
+  "keywords": [
+    "IOT"
+  ],
+  "author": "HIRWA RUKUNDO HOPE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrh2/Iot_RFID/issues"
+  },
+  "homepage": "https://github.com/hrh2/Iot_RFID#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "socket.io": "^4.7.5"
+  }
+}
